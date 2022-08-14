@@ -1,4 +1,4 @@
-version:  '2'
+version:  "2"
 services:
   u1:
     image: ubuntu_update_ping:1.0.0
