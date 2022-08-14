@@ -17,11 +17,11 @@ services:
       - vol-git:/var/test
 
   u2:
-  image: ubuntu_update_ping:1.0.0
-  ports:
-    - 9195:9195/tcp
-    - 9196:9196/tcp  
-  entrypoint: /bin/bash
+    image: ubuntu_update_ping:1.0.0
+    ports:
+      - 9195:9195/tcp
+      - 9196:9196/tcp  
+    entrypoint: /bin/bash
     stdin_open: true
     tty:  true
     networks:
