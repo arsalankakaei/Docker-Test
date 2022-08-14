@@ -1,0 +1,46 @@
+version: '2'
+
+
+services:
+  u1:
+    image: ubuntu_update_ping:1.0.0
+    ports:
+      - 9595:9595/tcp
+      - 9696:9696/tcp
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty:  true
+    networks:
+      net-git:
+        ipv4_address: 192.168.8.2
+    volumes:
+      - vol-git:/var/test
+
+  u2:
+  image: ubuntu_update_ping:1.0.0
+  ports:
+    - 9195:9195/tcp
+    - 9196:9196/tcp  
+  entrypoint: /bin/bash
+    stdin_open: true
+    tty:  true
+    networks:
+      net-git:
+        ipv4_address: 192.168.8.3
+    volumes:
+      - vol-git:/var/test
+
+
+
+ volumes:
+  vol-git:
+
+
+ networks:
+  net-git:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: "net-git"
+    ipam:
+      - subnet: 192.168.8.0/24
+        gateway:  192.168.8.1   
